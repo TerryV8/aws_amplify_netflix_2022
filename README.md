@@ -6,7 +6,40 @@ Clone Netflix on AWS Amplify using React, Nodejs
 
 To set up the project, we'll first create a new React app with create-react-app, a CLI tool used to bootstrap a React app using current best practices.
 
-npx create-react-app aws_amplify_netflix_2022
+`npx create-react-app aws_amplify_netflix_2022`
+
+# Launch the project
+
+Now that we're in the root of the project, we can run the app by using the following command:
+
+`npm start`
+
+# The Amplify Command Line Interface (CLI) is a unified toolchain to create AWS cloud services for your app. Let's go ahead and install the Amplify CLI.
+
+`npm install -g @aws-amplify/cli`
+
+# Now it's time to setup the Amplify CLI. Configure Amplify by running the following command:
+
+`amplify configure`
+
+# Initialize a new backend
+
+Now that we have a running React app, it's time to set up Amplify so that we can create the necessary backend services needed to support the app.
+
+`amplify init`
+
+# When you initialize a new Amplify project, a few things happen:
+
+It creates a top level directory called amplify that stores your backend definition. During the tutorial you'll add capabilities such as a GraphQL API and authentication. As you add features, the amplify folder will grow with infrastructure-as-code templates that define your backend stack. Infrastructure-as-code is a best practice way to create a replicable backend stack.
+
+It creates a file called aws-exports.js in the src directory that holds all the configuration for the services you create with Amplify. This is how the Amplify client is able to get the necessary information about your backend services.
+
+It modifies the .gitignore file, adding some generated files to the ignore list
+
+A cloud project is created for you in the AWS Amplify Console that can be accessed by running amplify console. The Console provides a list of backend environments, deep links to provisioned resources per Amplify category, status of recent deployments, and instructions on how to promote, clone, pull, and delete backend resources
+
+Install Amplify libraries
+`npm install aws-amplify @aws-amplify/ui-react`
 
 # Getting Started with Create React App
 

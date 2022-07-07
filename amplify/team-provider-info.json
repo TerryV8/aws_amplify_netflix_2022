@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplifynetflix2022-dev-142455-authRole",
+      "UnauthRoleArn": "arn:aws:iam::412508216422:role/amplify-amplifynetflix2022-dev-142455-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::412508216422:role/amplify-amplifynetflix2022-dev-142455-authRole",
+      "Region": "eu-west-3",
+      "DeploymentBucketName": "amplify-amplifynetflix2022-dev-142455-deployment",
+      "UnauthRoleName": "amplify-amplifynetflix2022-dev-142455-unauthRole",
+      "StackName": "amplify-amplifynetflix2022-dev-142455",
+      "StackId": "arn:aws:cloudformation:eu-west-3:412508216422:stack/amplify-amplifynetflix2022-dev-142455/ca1270e0-fdef-11ec-a72d-0ab48b1a7194",
+      "AmplifyAppId": "d2kdymf0wwj9e"
+    }
+  }
+}

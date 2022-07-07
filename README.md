@@ -41,6 +41,14 @@ A cloud project is created for you in the AWS Amplify Console that can be access
 Install Amplify libraries
 `npm install aws-amplify @aws-amplify/ui-react`
 
+Next, we need to configure Amplify on the client so that we can use it to interact with our backend services.
+
+Open src/index.js and add the following code below the last import:
+
+`import { Amplify } from 'aws-amplify';`
+`import awsExports from './aws-exports';`
+`Amplify.configure(awsExports);`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -5,3 +5,8 @@
 :root {
   --main-color: #0b0b0b;
 }
+
+footer {
+  background-color: grey;
+  color: white;
+}

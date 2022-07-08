@@ -119,3 +119,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# START TO CODE
+
+For css, use https://fonts.google.com/specimen/Roboto?query=roboto
+
+# USE ICONS
+
+Use some icons from https://mui.com/material-ui/material-icons/
+`yarn add @material-ui/core`
+`yarn add @material-ui/icons`

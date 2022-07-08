@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header"></header>
       <Home />
-      <footer>Website cloning Netflix by ThierryLV</footer>
+      <footer>Netflix website clone by ThierryLV</footer>
     </div>
   );
 }

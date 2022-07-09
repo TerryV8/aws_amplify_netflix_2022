@@ -4,9 +4,27 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
 import React from "react";
 
-function Featured() {
+function Featured({ type }) {
   return (
     <div className="featured">
+      {type && (
+        <div className="category">
+          {" "}
+          <span>{type === "movie" ? "Movies" : "Series"}</span>
+          <select name="genre" id="genre">
+            <option value="Genres">Genres</option>
+            <option value="Action">Action</option>
+            <option value="Anime">Anmine</option>
+            <option value="Comedies">Comedies</option>
+            <option value="Crime">Crime</option>
+            <option value="Drama">Drama</option>
+            <option value="Horror">Horror</option>
+            <option value="Kid">Kid</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Stand-Up-Talk-Shows">Stand-up & Talk Shows</option>
+          </select>
+        </div>
+      )}
       <img
         width="100%"
         src="https://flixchatter.files.wordpress.com/2021/02/lupin-featuredimg.jpg?w=1200"
@@ -24,12 +42,12 @@ function Featured() {
         </span>
         <div className="buttons">
           <button className="play">
-            <PlayArrowIcon />
+            <PlayArrowIcon sx={{ fontSize: "35px" }} />
             <span>Play</span>
           </button>
           <button className="more">
             <InfoOutlinedIcon />
-            <span>Info</span>
+            <span>More Info</span>
           </button>
         </div>
       </div>

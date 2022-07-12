@@ -57,6 +57,9 @@ function List(props) {
           <ListItem />
           <ListItem />
           <ListItem />
+          <ListItem />
+          <ListItem />
+          <ListItem />
         </div>
         {slideNumber > -5 && (
           <ArrowForwardIosOutlinedIcon

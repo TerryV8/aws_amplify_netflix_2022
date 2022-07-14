@@ -1,0 +1,39 @@
+.welcome {
+  height: 100%;
+  background-color: black;
+  position: relative;
+
+  .welcome-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .profiles {
+      display: flex;
+      flex-direction: row;
+
+      .profile {
+        cursor: pointer;
+        margin: 10px;
+
+        img {
+          width: 100px;
+          height: 100px;
+
+          &:hover {
+            border: 4px solid green;
+          }
+        }
+
+        .profile-name {
+          margin-top: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

@@ -2,19 +2,16 @@ import "./listItem.scss";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import VolumeOffOutlinedIcon from "@mui/icons-material/VolumeOffOutlined";
+import VolumeUpOutlinedIcon from "@mui/icons-material/VolumeUpOutlined";
 import { useState, useRef, useEffect } from "react";
 
 function ListItem() {
   const [isHoverItem, setIsHoverItem] = useState(false);
   const elementVideoDisplay = useRef(null);
-  const elementAudioWithVideoDisplay = useRef(null);
 
   const [elementVideoDisplayIsLoaded, setElementVideoDisplayIsLoaded] =
     useState(false);
-  const [
-    elementAudioWithVideoDisplayIsLoaded,
-    setElementAudioWithVideoDisplayIsLoaded,
-  ] = useState(false);
 
   useEffect(() => {
     console.log("B", elementVideoDisplay);
@@ -24,112 +21,25 @@ function ListItem() {
       elementVideoDisplay &&
       elementVideoDisplay.current !== null
     ) {
-      elementVideoDisplay.current.muted = false;
       elementVideoDisplay.current.play();
-      //elementVideoDisplay.current.muted = false;
-
-      //const audio = new Audio(
-      //  "https://amplify-amplifynetflix2022-dev-142455-deployment.s3.eu-west-3.amazonaws.com/spirited_away.mp3"
-      //);
-      //console.log(audio);
-
-      //audio.play();
-      //console.log(audio);
-
-      //console.log(elementAudioWithVideoDisplay);
-      //elementAudioWithVideoDisplay.current.play();
-    }
-  }, [
-    elementVideoDisplayIsLoaded,
-    //    elementVideoDisplay,
-    //elementVideoDisplay.current,
-  ]);
-
-  /*useEffect(() => {
-    console.log("AA1", elementVideoDisplay);
-    console.log("AA2", elementAudioWithVideoDisplayIsLoaded);
-
-    if (
-      elementVideoDisplayIsLoaded === true ||
-      (elementVideoDisplay && elementVideoDisplay.current !== null)
-    ) {
-      //elementVideoDisplay.current.play();
-      //elementVideoDisplay.current.muted = false;
-
-      //const audio = new Audio(
-      //  "https://amplify-amplifynetflix2022-dev-142455-deployment.s3.eu-west-3.amazonaws.com/spirited_away.mp3"
-      //);
-      //console.log(audio);
-
-      //audio.play();
-      //console.log(audio);
-
-      //console.log(elementAudioWithVideoDisplay);
-      //elementAudioWithVideoDisplay.current.play();
-      //elementAudioWithVideoDisplay.current.stop();
-      //elementAudioWithVideoDisplay.current.load();
-      elementAudioWithVideoDisplay.current.muted = false;
-      elementAudioWithVideoDisplay.current.play();
-    }
-  }, [elementAudioWithVideoDisplayIsLoaded]);
-
-  useEffect(() => {
-    console.log("BB1", elementVideoDisplay);
-    console.log("BB2", elementAudioWithVideoDisplayIsLoaded);
-
-    if (
-      elementAudioWithVideoDisplayIsLoaded === true ||
-      (elementAudioWithVideoDisplay &&
-        elementAudioWithVideoDisplay.current !== null)
-    ) {
-      //elementVideoDisplay.current.play();
-      //elementVideoDisplay.current.muted = false;
-
-      //const audio = new Audio(
-      //  "https://amplify-amplifynetflix2022-dev-142455-deployment.s3.eu-west-3.amazonaws.com/spirited_away.mp3"
-      //);
-      //console.log(audio);
-
-      //audio.play();
-      //console.log(audio);
-
-      //console.log(elementAudioWithVideoDisplay);
-      //elementAudioWithVideoDisplay.current.play();
-      //elementAudioWithVideoDisplay.current.stop();
-      elementAudioWithVideoDisplay.current.muted = false;
-      elementAudioWithVideoDisplay.current.play();
     }
   }, [elementVideoDisplayIsLoaded]);
-*/
-  /*useEffect(() => {
-    console.log("B", elementAudioWithVideoDisplay);
 
-    if (
-      elementAudioWithVideoDisplayIsLoaded === true &&
-      elementAudioWithVideoDisplay &&
-      elementAudioWithVideoDisplay.current !== null
-    ) {
-      elementAudioWithVideoDisplay.current.play();
-      //elementVideoDisplay.current.muted = false;
+  const [switchVolumeOffOn, setSwitchVolumeOffOn] = useState("off");
 
-      //const audio = new Audio(
-      //  "https://amplify-amplifynetflix2022-dev-142455-deployment.s3.eu-west-3.amazonaws.com/spirited_away.mp3"
-      //);
-      //console.log(audio);
+  function SwitchVolumeOffOn(e) {
+    e.preventDefault();
+    console.log("Volume switch off on clicked");
 
-      //audio.play();
-      //console.log(audio);
-
-      console.log(elementAudioWithVideoDisplay);
+    if (switchVolumeOffOn === "off") {
+      setSwitchVolumeOffOn("on");
+      elementVideoDisplay.current.muted = false;
+    } else {
+      setSwitchVolumeOffOn("off");
+      elementVideoDisplay.current.muted = true;
     }
-  }, [
-    elementAudioWithVideoDisplayIsLoaded,
-    //    elementVideoDisplay,
-    //elementVideoDisplay.current,
-  ]);*/
+  }
 
-  //const trailer =
-  //  "https://amplify-amplifynetflix2022-dev-142455-deployment.s3.eu-west-3.amazonaws.com/spirited_away.mp4";
   return (
     <div
       className="listItem"
@@ -139,8 +49,8 @@ function ListItem() {
       }}
       onMouseLeave={() => {
         setIsHoverItem(false);
-        setElementAudioWithVideoDisplayIsLoaded(false);
         setElementVideoDisplayIsLoaded(false);
+        setSwitchVolumeOffOn("off");
       }}
     >
       <img
@@ -172,24 +82,18 @@ function ListItem() {
             <p class="warning">Your browser does not support HTML5 video.</p>
           </video>
 
-          <audio
-            loop
-            control
-            ref={(el) => (elementAudioWithVideoDisplay.current = el)}
-            onLoadedData={() => {
-              setElementAudioWithVideoDisplayIsLoaded(true);
-              console.log("audio loaded");
-            }}
-          >
-            <source
-              src="https://amplify-amplifynetflix2022-dev-142455-deployment.s3.eu-west-3.amazonaws.com/spirited_away.mp3"
-              type="audio/mpeg"
-            />
-            Your browser does not support the audio element.
-          </audio>
-
           <div className="itemInfo">
             <div className="icons">
+              {switchVolumeOffOn === "off" && (
+                <button className="volume_off" onClick={SwitchVolumeOffOn}>
+                  <VolumeOffOutlinedIcon />
+                </button>
+              )}
+              {switchVolumeOffOn === "on" && (
+                <button className="volume_on" onClick={SwitchVolumeOffOn}>
+                  <VolumeUpOutlinedIcon />
+                </button>
+              )}
               <PlayArrowIcon />
               <AddOutlinedIcon />
               <ThumbUpOutlinedIcon />

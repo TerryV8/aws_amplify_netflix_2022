@@ -29,5 +29,31 @@
 
       object-fit: cover;
     }
+
+    .volume_off {
+      background-color: black;
+      color: white;
+      border-radius: 50px;
+      margin: 5px;
+      padding-top: 5px;
+      padding-bottom: 2px;
+
+      align-items: center;
+      text-align: center;
+      border: 3px solid white;
+    }
+
+    .volume_on {
+      background-color: black;
+      color: white;
+      border-radius: 50px;
+      margin: 5px;
+      padding-top: 5px;
+      padding-bottom: 2px;
+
+      align-items: center;
+      text-align: center;
+      border: 3px solid white;
+    }
   }
 }

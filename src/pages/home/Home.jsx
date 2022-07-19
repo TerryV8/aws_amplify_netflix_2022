@@ -1,16 +1,13 @@
 import "./home.scss";
-import Navbar from "../components/navbar/Navbar";
-import Featured from "../components/featured/Featured";
-import List from "../components/list/List";
-import Welcome from "../components/welcome/Welcome";
+import Navbar from "../../components/navbar/Navbar";
+import Featured from "../../components/featured/Featured";
+import List from "../../components/list/List";
+import Welcome from "../../components/welcome/Welcome";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 const Home = () => {
-  const [welcomePage, setWelcomePage] = useState(true);
-
   const currentLoggedIn = useSelector((state) => state.loggedIn.isLoggedIn);
-  const dispatch = useDispatch();
 
   return (
     <div className="home">

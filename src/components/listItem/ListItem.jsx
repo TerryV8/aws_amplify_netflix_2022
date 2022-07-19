@@ -5,8 +5,13 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import VolumeOffOutlinedIcon from "@mui/icons-material/VolumeOffOutlined";
 import VolumeUpOutlinedIcon from "@mui/icons-material/VolumeUpOutlined";
 import { useState, useRef, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { soundOn, soundOff } from "../../features/soundOnSlice";
 
 function ListItem() {
+  const soundOnSelector = useSelector((state) => state.soundOn.isSoundOn);
+  const dispatch = useDispatch();
+
   const [isHoverItem, setIsHoverItem] = useState(false);
   const elementVideoDisplay = useRef(null);
 
@@ -14,28 +19,27 @@ function ListItem() {
     useState(false);
 
   useEffect(() => {
-    console.log("B", elementVideoDisplay);
-
     if (
       elementVideoDisplayIsLoaded === true &&
       elementVideoDisplay &&
       elementVideoDisplay.current !== null
     ) {
       elementVideoDisplay.current.play();
+
+      if (soundOnSelector) {
+        elementVideoDisplay.current.muted = false;
+      }
     }
   }, [elementVideoDisplayIsLoaded]);
 
-  const [switchVolumeOffOn, setSwitchVolumeOffOn] = useState("off");
-
   function SwitchVolumeOffOn(e) {
     e.preventDefault();
-    console.log("Volume switch off on clicked");
 
-    if (switchVolumeOffOn === "off") {
-      setSwitchVolumeOffOn("on");
+    if (soundOnSelector === false) {
+      dispatch(soundOn());
       elementVideoDisplay.current.muted = false;
     } else {
-      setSwitchVolumeOffOn("off");
+      dispatch(soundOff());
       elementVideoDisplay.current.muted = true;
     }
   }
@@ -45,16 +49,13 @@ function ListItem() {
       className="listItem"
       onMouseEnter={() => {
         setIsHoverItem(true);
-        //console.log("C", elementVideoDisplay.current);
       }}
       onMouseLeave={() => {
         setIsHoverItem(false);
         setElementVideoDisplayIsLoaded(false);
-        setSwitchVolumeOffOn("off");
       }}
     >
       <img
-        onloadstart="this.volume=0.5"
         src="https://wwwflickeringmythc3c8f7.zapwp.com/q:i/r:0/wp:0/w:1/u:https://cdn.flickeringmyth.com/wp-content/uploads/2017/08/spirited-away.jpg"
         alt=""
       />
@@ -84,12 +85,12 @@ function ListItem() {
 
           <div className="itemInfo">
             <div className="icons">
-              {switchVolumeOffOn === "off" && (
+              {soundOnSelector === false && (
                 <button className="volume_off" onClick={SwitchVolumeOffOn}>
                   <VolumeOffOutlinedIcon />
                 </button>
               )}
-              {switchVolumeOffOn === "on" && (
+              {soundOnSelector && (
                 <button className="volume_on" onClick={SwitchVolumeOffOn}>
                   <VolumeUpOutlinedIcon />
                 </button>
@@ -107,6 +108,7 @@ function ListItem() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
               velit repellat porro, repudiandae quam suscipit, inventore enim a
               reiciendis quod exercitationem
+              <h3>{soundOnSelector ? "Yes" : "No"}</h3>
             </div>
             <div className="genre">Action</div>
           </div>

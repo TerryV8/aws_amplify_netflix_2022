@@ -104,11 +104,10 @@ function ListItem() {
               <span className="limit">+16</span>
               <span>1999</span>
             </div>
-            <div className="desc">
+            <div className="description">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
               velit repellat porro, repudiandae quam suscipit, inventore enim a
               reiciendis quod exercitationem
-              <h3>{soundOnSelector ? "Yes" : "No"}</h3>
             </div>
             <div className="genre">Action</div>
           </div>
